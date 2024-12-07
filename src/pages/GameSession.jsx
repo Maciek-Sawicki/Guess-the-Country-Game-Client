@@ -10,7 +10,6 @@ const GameSession = () => {
     const [countries, setCountries] = useState([]); 
     const [feedback, setFeedback] = useState(null);
     const [originalCountryName, setOriginalCountryName] = useState(null); 
-    const [isGameWon, setIsGameWon] = useState(false); 
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -38,9 +37,6 @@ const GameSession = () => {
             );
 
             if (data.message) {
-                // Gra wygrana, przekierowujemy na stronę "game-won"
-                setIsGameWon(true);
-                // Używamy 'navigate' do przekierowania na stronę "game-won"
                 navigate('/game-won', { state: { country: data.message, attempts: data.attempts } });
                 return;
             }
