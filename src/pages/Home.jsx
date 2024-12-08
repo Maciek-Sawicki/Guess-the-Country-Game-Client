@@ -10,7 +10,8 @@ const Home = () => {
 
     return (
         <div className="home-page">
-            <h1>Welcome to Guess the Country Game!</h1>
+            <h2>Welcome to </h2>
+            <h1>Guess the Country Game!</h1>
             <button onClick={handleStartGame} className="start-game-button">
                 Start Game
             </button>

@@ -62,22 +62,28 @@ const CountryGuessForm = ({ onGuess }) => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <input
-                type="text"
-                placeholder="Enter country name"
-                value={userGuess}
-                onChange={handleInputChange}
-                autoFocus
-            />
-            <button type="submit">Submit Guess</button>
-            
+            <div className="input-container">
+                <div className="input-country">
+                    <input
+                        type="text"
+                        placeholder="Enter country name"
+                        value={userGuess}
+                        onChange={handleInputChange}
+                        autoFocus
+                    />
+                    <button type="submit">Submit Guess</button>
+                </div>
+           
             {userGuess.length >= 3 && filteredCountries.length > 0 && (
-                <ul>
-                    {filteredCountries.map((country, index) => (
-                        <li key={index}>{country}</li>
-                    ))}
-                </ul>
+                <div className="suggestions-container">
+                    <ul className="countries-container">
+                        {filteredCountries.map((country, index) => (
+                            <li key={index}>{country}</li>
+                        ))}
+                    </ul>
+                </div>
             )}
+             </div>
         </form>
     );
 };

@@ -8,24 +8,37 @@ import {
 } from '../utils/hintsFormatter';
 
 const FeedbackTable = ({ feedback, originalCountryName }) => {
-    const feedbackData = [
-        ['Population', formatPopulationHint(feedback.populationHint, feedback.population, originalCountryName)],
-        ['Area', formatAreaHint(feedback.areaHint, feedback.area, originalCountryName)],
-        ['Continent', formatContinentHint(feedback.continent)],
-        ['Location Hint', formatLocationHint(feedback.location)],
-        ['Distance', formatDistanceHint(feedback.distance)],
+    const hints = [
+        'Population',
+        'Area',
+        'Continent',
+        'Location Hint',
+        'Distance',
     ];
 
+    const feedbackData = feedback
+        ? [
+              ['Population', formatPopulationHint(feedback.populationHint, feedback.population, originalCountryName)],
+              ['Area', formatAreaHint(feedback.areaHint, feedback.area, originalCountryName)],
+              ['Continent', formatContinentHint(feedback.continent)],
+              ['Location Hint', formatLocationHint(feedback.location)],
+              ['Distance', formatDistanceHint(feedback.distance)],
+          ]
+        : hints.map((hint) => [hint, '']); 
+
     return (
-        <table>
+        <table className={feedbackData.length === 0 ? 'empty-table' : ''}>
             <thead>
-                <tr><th>Hint</th><th>Details</th></tr>
+                <tr>
+                    <th>Hint</th>
+                    <th>Details</th>
+                </tr>
             </thead>
             <tbody>
                 {feedbackData.map(([hint, detail], index) => (
                     <tr key={index}>
                         <td>{hint}</td>
-                        <td dangerouslySetInnerHTML={{ __html: detail }}></td>
+                        <td dangerouslySetInnerHTML={{ __html: detail || '' }}></td>
                     </tr>
                 ))}
             </tbody>

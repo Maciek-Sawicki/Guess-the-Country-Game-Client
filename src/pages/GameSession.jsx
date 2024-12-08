@@ -30,7 +30,6 @@ const GameSession = () => {
     const handleGuess = async (guess) => {
         try {
             const { data } = await makeGuess(guess);
-            console.log(guess);
 
             const matchingCountry = countries.find(
                 (country) => country.name.toLowerCase() === guess.toLowerCase()
@@ -52,21 +51,18 @@ const GameSession = () => {
             console.error('Error handling guess:', error);
         }
     };
-
     return (
-        <div>
+        <div className="container">
+            <a href='/' className="new-game-link">New Game</a>
             {!difficulty ? (
                 <DifficultySelector onSelect={setDifficulty} />
             ) : (
                 <div>
-                    <h2>Difficulty: {difficulty}</h2>
+                    <FeedbackTable
+                        feedback={feedback || null}
+                        originalCountryName={originalCountryName || ''} 
+                    />
                     <CountryGuessForm onGuess={handleGuess} />
-                    {feedback && (
-                        <FeedbackTable
-                            feedback={feedback}
-                            originalCountryName={originalCountryName}
-                        />
-                    )}
                 </div>
             )}
         </div>

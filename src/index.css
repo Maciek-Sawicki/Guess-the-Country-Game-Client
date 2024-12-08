@@ -1,11 +1,18 @@
-/* :root {
+:root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
+  --text: #e8e2f1;
+  --background: #191323;
+  --primary: #22e8df;
+  --secondary: #421887;
+  --accent: #7127e9; 
+
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: var(--text);
+  background-color: var(--background);
+  font-size: 24px;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -23,35 +30,67 @@ a:hover {
 }
 
 body {
-  margin: 0;
   display: flex;
-  place-items: center;
+  justify-content: center;
+  align-items: center;
   min-width: 320px;
   min-height: 100vh;
+  overflow: hidden;
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  color: var(--primary);
+}
+
+h2 {
+  margin-bottom: 0;
 }
 
 button {
+  align-self: center;
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
+  margin: 1em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--secondary);
   cursor: pointer;
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: var(--primary);
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+input {
+  align-self: center;
+  border-radius: 8px;
+  border: 1px solid var(--primary);
+  padding: 0.6em 1.2em;
+  margin: 1em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: var(--background);
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+input::placeholder {
+  color: var(--text);
+}
+
+input:focus{
+  outline-width: 1px;
+  outline-style: solid;
+  outline-color: var(--primary);
 }
 
 @media (prefers-color-scheme: light) {
@@ -65,4 +104,90 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
-} */
+} 
+
+.root {
+  margin: 0 auto;
+}
+
+.home-page {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.level-description-container {
+  height: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1em;
+}
+
+.countries-container {
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+  justify-content: flex-start;
+  height: 100vh; 
+  padding: 20px;
+  max-width: 1440px;
+}
+
+.difficulty-container {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+
+.input-country {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+ul li {
+  list-style: none;
+}
+
+.new-game-link {
+  position: fixed;
+  top:20px;
+  right: 20px;
+  font-size: 0.8em;
+}
+
+table {
+  width: 1200px;
+  margin: 50px; 
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.input-container {
+  width: 100%;  
+}
+
+.won-container {
+  text-align: center;
+}
+
+span {
+  color: var(--primary);
+}
