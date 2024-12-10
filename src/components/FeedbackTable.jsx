@@ -26,8 +26,10 @@ const FeedbackTable = ({ feedback, originalCountryName }) => {
           ]
         : hints.map((hint) => [hint, '']); 
 
+    const isTableVisible = feedbackData.some(([, detail]) => detail); 
+
     return (
-        <table className={feedbackData.length === 0 ? 'empty-table' : ''}>
+        <table className={isTableVisible ? '' : 'table-invisible'}>
             <thead>
                 <tr>
                     <th>Hint</th>
